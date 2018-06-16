@@ -28,10 +28,10 @@ public class ArrayList<T> implements Atable
         --size;
     }
     @Override
-    public Object at(int index)
+    public T at(int index)
     {
         if (index>=size||index<0) throw new NullPointerException();
-        return arr[index];
+        return (T)arr[index];
     }
     public int size()
     {
