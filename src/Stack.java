@@ -2,9 +2,9 @@ public class Stack<T>
 {
     private class Node
     {
-        public T obj;
-        Node back;
-        public Node(T obj)
+        private T obj;
+        private Node back;
+        private Node(T obj)
         {
             this.obj=obj;
             back=null;
@@ -34,5 +34,9 @@ public class Stack<T>
     public boolean is_empty()
     {
         return top==null;
+    }
+    public T top()
+    {
+        return top.obj;
     }
 }
