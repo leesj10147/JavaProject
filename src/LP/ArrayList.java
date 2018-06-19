@@ -1,4 +1,6 @@
-public class ArrayList<T> implements Atable
+package LP;
+
+public class ArrayList<T> implements Atable<T>
 {
     private Object[] arr;
     private int size;
@@ -23,18 +25,24 @@ public class ArrayList<T> implements Atable
     }
     public void remove(int index)
     {
-        if(index>=size||index<0) throw new NullPointerException();
+        if(index>=size||index<0) throw new IndexOutOfBoundsException(index);
         System.arraycopy(arr,index+1,arr,index,arr.length-index-1);
         --size;
     }
     @Override
     public T at(int index)
     {
-        if (index>=size||index<0) throw new NullPointerException();
+        if (index>=size||index<0) throw new IndexOutOfBoundsException(index);
         return (T)arr[index];
     }
+    @Override
     public int size()
     {
         return size;
+    }
+    public void set(int index, T item)
+    {
+        if (index>=size||index<0) throw new NullPointerException();
+        arr[index]=item;
     }
 }

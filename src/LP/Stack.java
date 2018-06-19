@@ -1,3 +1,5 @@
+package LP;
+
 public class Stack<T>
 {
     private class Node
@@ -27,6 +29,7 @@ public class Stack<T>
     }
     public T pop()
     {
+        if (is_empty()) throw new NullPointerException();
         Node n=top;
         top=top.back;
         return n.obj;

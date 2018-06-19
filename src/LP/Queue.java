@@ -1,3 +1,5 @@
+package LP;
+
 public class Queue<T>
 {
     private class Node
@@ -28,6 +30,7 @@ public class Queue<T>
     }
     public T pop()
     {
+        if (is_empty()) throw new NullPointerException();
         Node r=head;
         head=head.back;
         return r.obj;
