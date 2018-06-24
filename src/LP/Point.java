@@ -18,9 +18,13 @@ public class Point implements Comparable<Point>
     public int compareTo(Point o)
     {
         if (this.x==o.x&&this.y==o.y) return 0;
-        else if (this.x==o.x)
-            return this.y<o.y?-1:1;
-        return this.x<o.x?-1:1;
+        else if (this.y==o.y)
+            return this.x<o.x?-1:1;
+        return this.y<o.y?-1:1;
+    }
+    public static double distance_sqrt(Point a, Point b)
+    {
+        return (a.x-b.x)*(a.x-b.x)-(a.y-b.y)*(a.y-b.y);
     }
     @Override
     public String toString()

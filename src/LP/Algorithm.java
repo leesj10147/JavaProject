@@ -132,13 +132,13 @@ public class Algorithm
     public static void insertion_sort(Atable list, int s, int e)
     {
         for (int i=s+1,index=i;i<=e;++i,index=i)
-            while(index>0 && ((Comparable)list.at(index)).compareTo(list.at(index-1))<0)
+            while(index>s && ((Comparable)list.at(index)).compareTo(list.at(index-1))<0)
                 list.swap(index,--index);
     }
     public static<T> void insertion_sort(Atable<T> list, int s, int e, Comparator<? super T> comp)
     {
         for (int i=s+1,index=i;i<=e;++i,index=i)
-            while (index > 0 && comp.compare(list.at(index), list.at(index - 1)) < 0)
+            while (index > s && comp.compare(list.at(index), list.at(index - 1)) < 0)
                 list.swap(index, --index);
     }
     public static void insertion_sort(Atable list)
@@ -240,7 +240,11 @@ public class Algorithm
             if(V.at(0).compareTo(V.at(i))>0) V.swap(0,i);
         fast_sort(V, 1, V.size()-1, (a, b)->{
             double c=Point.ccw(V.at(0), a, b);
-            if(c==0) return a.compareTo(b);
+            if(c==0)
+            {
+                if (a.y != b.y) return a.y < b.y? -1:1;
+                return a.x<b.x?-1:1;
+            }
             return c>0L?-1:1;
         });
         ArrayList<Point> S=new ArrayList<>(V.size());
