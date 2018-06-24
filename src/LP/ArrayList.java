@@ -11,13 +11,13 @@ public class ArrayList<T> implements Atable<T>
     }
     public ArrayList()
     {
-        this(100);
+        this(128);
     }
     public void add(T item)
     {
         if(arr.length<=size)
         {
-            Object[] N=new Object[arr.length*10];
+            Object[] N=new Object[arr.length*2];
             System.arraycopy(arr,0,N,0,arr.length);
             arr=N;
         }
@@ -25,15 +25,19 @@ public class ArrayList<T> implements Atable<T>
     }
     public void remove(int index)
     {
-        if(index>=size||index<0) throw new IndexOutOfBoundsException(index);
-        System.arraycopy(arr,index+1,arr,index,arr.length-index-1);
+        if(index>=size||index<0) throw new IndexOutOfBoundsException(""+index);
+        System.arraycopy(arr,index+1,arr,index,size-index-1);
         --size;
     }
     @Override
     public T at(int index)
     {
-        if (index>=size||index<0) throw new IndexOutOfBoundsException(index);
+        if (index>=size||index<0) throw new IndexOutOfBoundsException(""+index);
         return (T)arr[index];
+    }
+    public T back()
+    {
+        return (T)arr[size-1];
     }
     @Override
     public int size()
