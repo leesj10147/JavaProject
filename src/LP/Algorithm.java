@@ -254,4 +254,15 @@ public class Algorithm
             while(S.size()>=2&&Point.ccw(S.at(S.size() - 2), S.at(S.size() - 1), V.at(nx)) <= 0) S.remove(S.size()-1);
         return S;
     }
+    public static int length_of_LIS(int[] A)
+    {
+        ArrayList<Integer> R=new ArrayList<>();
+        R.add(Integer.MAX_VALUE);
+        for(int i=0;i<A.length;++i)
+        {
+            if(R.back()<A[i]) R.add(A[i]);
+            else R.set(Algorithm.lower_bound(R, A[i]), A[i]);
+        }
+        return R.size();
+    }
 }

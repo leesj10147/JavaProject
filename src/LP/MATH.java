@@ -115,15 +115,4 @@ public class MATH
         }
         return res;
     }
-    public static int length_of_LIS(int[] A)
-    {
-        ArrayList<Integer> R=new ArrayList<>();
-        R.add(Integer.MAX_VALUE);
-        for(int i=0;i<A.length;++i)
-        {
-            if(R.back()<A[i]) R.add(A[i]);
-            else R.set(Algorithm.lower_bound(R, A[i]), A[i]);
-        }
-        return R.size();
-    }
 }
